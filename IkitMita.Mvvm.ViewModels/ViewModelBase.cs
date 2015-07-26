@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 
 namespace IkitMita.Mvvm.ViewModels
 {
-    public class ViewModelBase : IViewModel, INotifyPropertyChanged
+    public abstract class ViewModelBase : IViewModel, INotifyPropertyChanged
     {
         private static readonly ConcurrentDictionary<Type, Dictionary<string, List<PropertyInfo>>> _propertiesDependenciesCashe = new ConcurrentDictionary<Type, Dictionary<string, List<PropertyInfo>>>();
         private readonly ConcurrentStack<int> _operationsInProggress = new ConcurrentStack<int>();
@@ -88,7 +88,6 @@ namespace IkitMita.Mvvm.ViewModels
 
             return dependencies;
         }
-
 
         protected OperationBusier StartOperation()
         {

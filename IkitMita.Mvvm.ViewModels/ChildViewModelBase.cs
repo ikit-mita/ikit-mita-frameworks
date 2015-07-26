@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 
 namespace IkitMita.Mvvm.ViewModels
 {
     public abstract class ChildViewModelBase : ViewModelBase, IChildViewModel
     {
+        [Import]
         protected virtual IViewModelManager<IChildViewModel> ViewModelManager { get; set; }
 
         private bool? _modalResult;
