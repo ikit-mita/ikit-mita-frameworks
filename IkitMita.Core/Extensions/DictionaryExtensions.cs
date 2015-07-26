@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     /// <summary>
     /// Extension methods for IDictionary[TKey, TValue] interface.

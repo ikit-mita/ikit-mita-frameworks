@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     public static class Check
     {
@@ -17,7 +17,7 @@ namespace IkitMita.Core
         /// <returns>Returns argument value without any changes</returns>
         /// <exception cref="ArgumentException">If argument value is null or empty string</exception>
         [NotNull]
-        public static string NotNullOrEmpty(string argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePathAttribute] string filePath = null)
+        public static string NotNullOrEmpty(string argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null)
         {
             if (argValue.IsNullOrEmpty())
             {
@@ -40,7 +40,7 @@ namespace IkitMita.Core
         /// <returns>Returns argument value without any changes</returns>
         /// <exception cref="ArgumentNullException">If argument value is null</exception>
         [NotNull]
-        public static T NotNull<T>([NoEnumeration]T argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePathAttribute] string filePath = null) where T : class
+        public static T NotNull<T>([NoEnumeration]T argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : class
         {
             if (argValue == null)
             {
@@ -63,7 +63,7 @@ namespace IkitMita.Core
         /// <returns>Returns argument value without any changes</returns>
         /// <exception cref="ArgumentNullException">If argument value is null</exception>
         [NotNull]
-        public static T? NotNull<T>(T? argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePathAttribute] string filePath = null) where T : struct
+        public static T? NotNull<T>(T? argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : struct
         {
             if (argValue == null)
             {

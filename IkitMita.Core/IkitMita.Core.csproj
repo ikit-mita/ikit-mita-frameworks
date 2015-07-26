@@ -7,7 +7,7 @@
     <ProjectGuid>{CDCD63B3-3D56-4938-9E81-FA9E71187D3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IkitMita.Core</RootNamespace>
+    <RootNamespace>IkitMita</RootNamespace>
     <AssemblyName>IkitMita.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -36,6 +36,7 @@
       <HintPath>..\packages\JetBrains.Annotations.9.1.1\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Check.cs" />
+    <Compile Include="DataAccess\DomainObject.cs" />
+    <Compile Include="DataAccess\FullNamedDomainObject.cs" />
+    <Compile Include="DataAccess\IDomainObject.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
+    <Compile Include="DataAccess\IRepositoryProvider.cs" />
+    <Compile Include="DataAccess\NamedDomainObject.cs" />
+    <Compile Include="DataAccess\TitledDomainObject.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\GenericExtensions.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />

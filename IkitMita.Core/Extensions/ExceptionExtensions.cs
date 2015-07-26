@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     public static class ExceptionExtensions
     {

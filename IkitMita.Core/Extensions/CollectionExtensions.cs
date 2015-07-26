@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     public static class CollectionExtensions
     {

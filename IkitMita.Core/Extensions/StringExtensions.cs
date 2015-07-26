@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     public static class StringExtensions
     {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using JetBrains.Annotations;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     public static class EnumerableExtensions
     {

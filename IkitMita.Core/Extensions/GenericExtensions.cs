@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace IkitMita.Core
+namespace IkitMita
 {
     public static class GenericExtensions
     {
