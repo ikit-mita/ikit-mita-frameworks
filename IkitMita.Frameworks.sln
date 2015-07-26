@@ -14,6 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FB665F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.DataAccess.EF", "IkitMita.DataAccess.EF\IkitMita.DataAccess.EF.csproj", "{D3319773-108D-4026-9EB9-0C6D636C5EF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Mvvm", "IkitMita.Mvvm\IkitMita.Mvvm.csproj", "{6082EC92-052B-4E66-A578-514125F4EF5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Mvvm.Views", "IkitMita.Mvvm.Views\IkitMita.Mvvm.Views.csproj", "{68A7D793-A658-4771-B333-86AD413293C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Mvvm.ViewModels", "IkitMita.Mvvm.ViewModels\IkitMita.Mvvm.ViewModels.csproj", "{42EC3294-1663-4A68-BFD2-95E4C391BD15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +34,18 @@ Global
 		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6082EC92-052B-4E66-A578-514125F4EF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6082EC92-052B-4E66-A578-514125F4EF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6082EC92-052B-4E66-A578-514125F4EF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6082EC92-052B-4E66-A578-514125F4EF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A7D793-A658-4771-B333-86AD413293C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A7D793-A658-4771-B333-86AD413293C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A7D793-A658-4771-B333-86AD413293C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A7D793-A658-4771-B333-86AD413293C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42EC3294-1663-4A68-BFD2-95E4C391BD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42EC3294-1663-4A68-BFD2-95E4C391BD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42EC3294-1663-4A68-BFD2-95E4C391BD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42EC3294-1663-4A68-BFD2-95E4C391BD15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

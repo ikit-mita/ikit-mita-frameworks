@@ -35,18 +35,18 @@ namespace IkitMita
         /// <exception cref="System.ArgumentNullException">
         ///     <paramref name="key"/> is null.
         /// </exception>
-        public static TValue GetValueOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, TValue @default = default(TValue))
+        public static TValue GetOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, TValue @default = default(TValue))
         {
-            return dictionary.GetValueOrAdd(key, k => @default);
+            return dictionary.GetOrAdd(key, k => @default);
         }
 
-        public static TValue GetValueOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TValue> getDefault)
+        public static TValue GetOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TValue> getDefault)
         {
             getDefault = Check.NotNull(getDefault, "getDefault");
-            return dictionary.GetValueOrAdd(key, k => getDefault());
+            return dictionary.GetOrAdd(key, k => getDefault());
         }
 
-        public static TValue GetValueOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TKey, TValue> getDefault)
+        public static TValue GetOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TKey, TValue> getDefault)
         {
             dictionary = Check.NotNull(dictionary, "dictionary");
             getDefault = Check.NotNull(getDefault, "getDefault");
@@ -89,13 +89,13 @@ namespace IkitMita
         /// </exception>
         public static TValue GetValueSafe<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, TValue @default = default(TValue))
         {
-            return dictionary.GetValueOrAdd(key, k => @default);
+            return dictionary.GetOrAdd(key, k => @default);
         }
 
         public static TValue GetValueSafe<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TValue> getDefault)
         {
             getDefault = Check.NotNull(getDefault, "getDefault");
-            return dictionary.GetValueOrAdd(key, k => getDefault());
+            return dictionary.GetOrAdd(key, k => getDefault());
         }
 
         public static TValue GetValueSafe<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TKey, TValue> getDefault)

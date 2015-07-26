@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace IkitMita.DataAccess.EF
 {
@@ -31,6 +33,17 @@ namespace IkitMita.DataAccess.EF
             if (!_isDisposed)
             {
                 _dbContext.SaveChanges(); 
+                return;
+            }
+
+            throw new ObjectDisposedException(GetType().Name);
+        }
+
+        public async Task SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            if (!_isDisposed)
+            {
+                await _dbContext.SaveChangesAsync(cancellationToken);
                 return;
             }
 
@@ -68,6 +81,12 @@ namespace IkitMita.DataAccess.EF
             {
                 entry.State = EntityState.Unchanged;
             }
+        }
+
+        public Task RevertChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            RevertChanges();
+            return Task.FromResult(0);
         }
     }
 }

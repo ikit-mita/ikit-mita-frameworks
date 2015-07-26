@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using JetBrains.Annotations;
 
 namespace IkitMita.DataAccess
 {
@@ -13,6 +14,7 @@ namespace IkitMita.DataAccess
 
         public virtual string LastName { get; set; }
 
+        [NotNull]
         public virtual string Initials
         {
             get
@@ -33,11 +35,13 @@ namespace IkitMita.DataAccess
             }
         }
 
+        [NotNull]
         public virtual string FullName
         {
             get { return string.Join(" ", LastName, FirstName, MiddleName); }
         }
 
+        [NotNull]
         public virtual string ShortName
         {
             get { return string.Join(" ", LastName, Initials); }

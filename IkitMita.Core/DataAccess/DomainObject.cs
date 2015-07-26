@@ -34,14 +34,12 @@ namespace IkitMita.DataAccess
 
         public override bool Equals(object obj)
         {
-            var ido = obj as IDomainObject;
-            return ido != null && Equals(ido);
+            return Equals(obj as IDomainObject);
         }
 
         public virtual bool Equals(IDomainObject other)
         {
-            return other.GetType() == GetType() &&
-                Id == other.Id;
+            return other != null && other.GetType() == GetType() && Id == other.Id;
         }
 
         public override int GetHashCode()

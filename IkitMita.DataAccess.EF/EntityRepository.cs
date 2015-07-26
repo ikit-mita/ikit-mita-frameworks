@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace IkitMita.DataAccess.EF
 {
@@ -29,6 +30,14 @@ namespace IkitMita.DataAccess.EF
             var dbSet = _dbContext.Set<T>();
             var item = dbSet.Find(id);
             return item;
+        }
+
+        public async Task<T> FindAsync(int id)
+        {
+            var dbSet = _dbContext.Set<T>();
+            var item = await dbSet.FindAsync(id);
+            return item;
+
         }
 
         public IQueryable<T> GetAll()
