@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{42EC3294-1663-4A68-BFD2-95E4C391BD15}</ProjectGuid>
+    <ProjectGuid>{6D90A403-3517-440F-BE8B-E370BBCE8367}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IkitMita.Mvvm.ViewModels</RootNamespace>
-    <AssemblyName>IkitMita.Mvvm.ViewModels</AssemblyName>
+    <RootNamespace>IkitMita.Mvvm.MefClient</RootNamespace>
+    <AssemblyName>IkitMita.Mvvm.MefClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -35,37 +35,43 @@
     <Reference Include="JetBrains.Annotations">
       <HintPath>..\packages\JetBrains.Annotations.9.1.1\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Mef.CommonServiceLocator">
+      <HintPath>..\packages\CommonServiceLocator.MefAdapter.1.0\lib\Microsoft.Mef.CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChildViewModelBase.cs" />
-    <Compile Include="ViewModelManagerBase.cs" />
-    <Compile Include="DelegateCommand.cs" />
-    <Compile Include="DelegateCommandBase.cs" />
-    <Compile Include="DependsOnAttribute.cs" />
-    <Compile Include="IChildViewModel.cs" />
-    <Compile Include="IThreadSafeInvoker.cs" />
-    <Compile Include="IViewModel.cs" />
-    <Compile Include="IViewModelManager.cs" />
-    <Compile Include="NotThreadSafeInvoker.cs" />
+    <Compile Include="ChildViewManager.cs" />
+    <Compile Include="ChildViewModelManager.cs" />
+    <Compile Include="MvvmApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelBase.cs" />
-    <Compile Include="ViewModelEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IkitMita.Core\IkitMita.Core.csproj">
-      <Project>{CDCD63B3-3D56-4938-9E81-FA9E71187D3A}</Project>
-      <Name>IkitMita.Core</Name>
+    <ProjectReference Include="..\IkitMita.Mvvm.ViewModels\IkitMita.Mvvm.ViewModels.csproj">
+      <Project>{42EC3294-1663-4A68-BFD2-95E4C391BD15}</Project>
+      <Name>IkitMita.Mvvm.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IkitMita.Mvvm.Views\IkitMita.Mvvm.Views.csproj">
+      <Project>{68A7D793-A658-4771-B333-86AD413293C2}</Project>
+      <Name>IkitMita.Mvvm.Views</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
