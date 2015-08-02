@@ -1,0 +1,22 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:IkitMita.Wpf.Converters"
+    xmlns:wpf="clr-namespace:IkitMita.Wpf">
+
+    <converters:BooleanConverter x:Key="BoolToVisibleConv" OnTrue="{wpf:Visibility Visible}" OnFalse="{wpf:Visibility Collapsed}" />
+    <converters:BooleanConverter x:Key="BoolToVisibleHiddenConv" OnTrue="{wpf:Visibility Visible}" OnFalse="{wpf:Visibility Hidden}" />
+    <converters:BooleanConverter x:Key="BoolToCollapsedConv" OnTrue="{wpf:Visibility Collapsed}" OnFalse="{wpf:Visibility Visible}" />
+    <converters:BooleanConverter x:Key="BoolToHiddenConv" OnTrue="{wpf:Visibility Hidden}" OnFalse="{wpf:Visibility Visible}" />
+
+    <converters:BooleanConverter x:Key="InverBoolConv" OnTrue="{wpf:Bool False}" OnFalse="{wpf:Bool True}" />
+
+    <converters:NullConverter x:Key="NullToVisibleConv" OnNull="{wpf:Visibility Visible}" OnNotNull="{wpf:Visibility Collapsed}" />
+    <converters:NullConverter x:Key="NullToVisibleHiddenConv" OnNull="{wpf:Visibility Visible}" OnNotNull="{wpf:Visibility Hidden}" />
+    <converters:NullConverter x:Key="NullToCollapsedConv" OnNull="{wpf:Visibility Collapsed}" OnNotNull="{wpf:Visibility Visible}" />
+    <converters:NullConverter x:Key="NullToHiddenConv" OnNull="{wpf:Visibility Hidden}" OnNotNull="{wpf:Visibility Visible}" />
+
+    <converters:NullConverter x:Key="NullToTrueConv" OnNull="{wpf:Bool True}" OnNotNull="{wpf:Bool False}" />
+    <converters:NullConverter x:Key="NullToFalseConv" OnNull="{wpf:Bool False}" OnNotNull="{wpf:Bool True}" />
+
+</ResourceDictionary>

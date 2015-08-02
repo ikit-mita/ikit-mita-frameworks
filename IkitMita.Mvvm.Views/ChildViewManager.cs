@@ -7,8 +7,8 @@ namespace IkitMita.Mvvm.Views
 {
     public class ChildViewManager : ViewManagerBase<IChildViewModel>
     {
-        private readonly ConcurrentDictionary<IChildViewModel, ChildViewPresenter> _openedPresenters =
-            new ConcurrentDictionary<IChildViewModel, ChildViewPresenter>();
+        private readonly ConcurrentDictionary<IShowableViewModel, ChildViewPresenter> _openedPresenters =
+            new ConcurrentDictionary<IShowableViewModel, ChildViewPresenter>();
 
 
         public ChildViewManager(IViewModelManager<IChildViewModel> vmManager, IServiceLocator serviceLocator)
@@ -18,7 +18,7 @@ namespace IkitMita.Mvvm.Views
 
         public override void ShowViewForViewModel(IChildViewModel viewModel)
         {
-            IChildViewModel parentViewModel = viewModel.Parent;
+            IShowableViewModel parentViewModel = viewModel.Parent;
             ChildViewPresenter parentPresenter = null;
 
             if (parentViewModel != null)

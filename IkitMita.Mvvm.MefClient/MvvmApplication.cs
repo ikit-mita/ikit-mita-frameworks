@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using IkitMita.Mvvm.ViewModels;
 using IkitMita.Mvvm.Views;
 using Microsoft.Mef.CommonServiceLocator;
@@ -12,11 +12,16 @@ namespace IkitMita.Mvvm.MefClient
 {
     public class MvvmApplication : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
+        public Type StartupViewModelType { get; set; }
 
-            FillAppResources();
+        protected void StartupHandler(object sender, StartupEventArgs e)
+        {
+            InitializeMef();
+        }
+
+
+        protected void InitializeMef()
+        {
             var assembly = new AssemblyCatalog(Assembly.GetEntryAssembly());
             var catalog = new AggregateCatalog();
             catalog.Catalogs.Add(assembly);
@@ -26,6 +31,16 @@ namespace IkitMita.Mvvm.MefClient
             ServiceLocator.SetLocatorProvider(() => mefServiceLocator);
             container.ComposeExportedValue<IServiceLocator>(mefServiceLocator);
             container.ComposeParts(this);
+
+            if (StartupViewModelType != null)
+            {
+                var showableViewModel = Locator.GetInstance(StartupViewModelType) as IShowableViewModel;
+
+                if (showableViewModel != null)
+                {
+                    showableViewModel.Show();
+                }
+            }
         }
 
         [Import(RequiredCreationPolicy = CreationPolicy.Shared)]
@@ -33,19 +48,5 @@ namespace IkitMita.Mvvm.MefClient
 
         [Import(RequiredCreationPolicy = CreationPolicy.Shared)]
         protected IViewManager<IChildViewModel> ViewManager { get; set; }
-
-        private void FillAppResources()
-        {
-            var buttonStyle = new Style(typeof(Button));
-            buttonStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty, 21d));
-            buttonStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(15, 0, 15, 0)));
-            Resources.Add(typeof(Button), buttonStyle);
-
-            var textBoxStyle = new Style(typeof(TextBox));
-            textBoxStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty, 21d));
-            Resources.Add(typeof(TextBox), textBoxStyle);
-
-        }
-
     }
 }

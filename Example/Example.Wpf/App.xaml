@@ -1,0 +1,15 @@
+﻿<mefClient:MvvmApplication 
+    x:Class="Example.Wpf.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mefClient="clr-namespace:IkitMita.Mvvm.MefClient;assembly=IkitMita.Mvvm.MefClient"
+    xmlns:viewModels="clr-namespace:Example.ViewModels;assembly=Example.ViewModels"
+    Startup="StartupHandler" ShutdownMode="OnMainWindowClose"
+    >
+    <mefClient:MvvmApplication.StartupViewModelType>
+        <x:Type  Type="viewModels:MainViewModel" />
+    </mefClient:MvvmApplication.StartupViewModelType>
+    <Application.Resources>
+         
+    </Application.Resources>
+</mefClient:MvvmApplication>

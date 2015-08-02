@@ -54,6 +54,7 @@
     <Compile Include="DataAccess\NamedDomainObject.cs" />
     <Compile Include="DataAccess\TitledDomainObject.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\GenericExtensions.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />

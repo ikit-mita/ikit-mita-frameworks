@@ -1,21 +1,13 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 
 namespace IkitMita.Mvvm.ViewModels
 {
-    public interface IChildViewModel : IViewModel
+    public interface IChildViewModel : IShowableViewModel
     {
-        IChildViewModel Parent { get; }
+        IShowableViewModel Parent { get; }
 
         bool ModalResult { get; }
 
-        bool IsClosed { get; }
-
-        string Title { get; }
-
-        void Show();
-
-        void Close(bool modalResult = false);
-
-        event EventHandler Closed;
+        Task Close(bool modalResult = false);
     }
 }

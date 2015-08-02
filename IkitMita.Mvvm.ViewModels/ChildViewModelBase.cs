@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Threading.Tasks;
 
 namespace IkitMita.Mvvm.ViewModels
 {
@@ -12,7 +13,7 @@ namespace IkitMita.Mvvm.ViewModels
         private string _title;
         private DelegateCommand<bool?> _closeCommand;
 
-        public IChildViewModel Parent { get; set; }
+        public IShowableViewModel Parent { get; set; }
 
         public bool ModalResult { get { return _modalResult.GetValueOrDefault(); } }
 
@@ -40,12 +41,22 @@ namespace IkitMita.Mvvm.ViewModels
 
         public void Show()
         {
+            if (ViewModelManager == null)
+            {
+                throw new InvalidOperationException("You can't call method ChildViewModelBase.Show before ViewModelManager was initialized.");
+            }
+
             ThreadSafeInvoker.Invoke(() => ViewModelManager.ShowViewModel(this));
         }
 
-        public void Close(bool modalResult = false)
+        public async Task Close()
         {
-            if (OnClosing(modalResult))
+            await Close(false);
+        }
+
+        public async Task Close(bool modalResult)
+        {
+            if (await OnClosing(modalResult))
             {
                 IsClosed = true;
                 _modalResult = modalResult;
@@ -54,9 +65,9 @@ namespace IkitMita.Mvvm.ViewModels
             }
         }
 
-        protected virtual bool OnClosing(bool modalResult)
+        protected virtual Task<bool> OnClosing(bool modalResult)
         {
-            return true;
+            return Task.FromResult(true);
         }
 
         protected virtual void OnClosed()
