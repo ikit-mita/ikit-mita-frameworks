@@ -21,6 +21,7 @@
         
         <CheckBox Content="Allow Message" IsChecked="{Binding AllowMessage}" />
         
-        <Button Content="Show Message" Command="{Binding ShowMessageCommand}" />
+        <Button Content="Show Message" Command="{Binding ShowMessageCommand}" 
+                Visibility="{Binding AllowMessage, Converter={StaticResource BoolToVisibleConv}}" />
     </StackPanel>
 </UserControl>

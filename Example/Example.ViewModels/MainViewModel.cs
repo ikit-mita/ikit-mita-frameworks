@@ -58,7 +58,7 @@ namespace Example.ViewModels
         }
 
         [DependsOn("TextMaxLength")]
-        [DependsOn("TextMaxLength")]
+        [DependsOn("MessageText")]
         public int MessageTextCharsLeft
         {
             get { return TextMaxLength - (MessageText ?? string.Empty).Length; }
@@ -95,7 +95,7 @@ namespace Example.ViewModels
         {
             var messageViewModel = ViewModelProvider.ShowMessage("Question", "Close?", MessageButtons.OkCancel);
             var res = await messageViewModel;
-            return res == "Ok";
+            return res == MessageButtons.OkCancel[0];
         }
     }
 }

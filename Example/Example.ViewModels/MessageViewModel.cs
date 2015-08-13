@@ -28,9 +28,10 @@ namespace Example.ViewModels
             get { return _onButtonClickCommand ?? (_onButtonClickCommand = new DelegateCommand<string>(OnButtonClick)); }
         }
 
-        private void OnButtonClick(string button)
+        private async void OnButtonClick(string button)
         {
             Result = button;
+            await Close(true);
         }
 
         public void SetTitle(string title)

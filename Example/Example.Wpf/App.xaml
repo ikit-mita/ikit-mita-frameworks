@@ -7,9 +7,13 @@
     Startup="StartupHandler" ShutdownMode="OnMainWindowClose"
     >
     <mefClient:MvvmApplication.StartupViewModelType>
-        <x:Type  Type="viewModels:MainViewModel" />
+        <x:Type Type="viewModels:MainViewModel" />
     </mefClient:MvvmApplication.StartupViewModelType>
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/IkitMita.Wpf;component/Converters.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </mefClient:MvvmApplication>
