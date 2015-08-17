@@ -17,7 +17,7 @@ namespace IkitMita
         /// <returns>Returns argument value without any changes</returns>
         /// <exception cref="ArgumentException">If argument value is null or empty string</exception>
         [NotNull]
-        public static string NotNullOrEmpty(string argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null)
+        public static string NotNullOrEmpty(string argValue, [InvokerParameterName] string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null)
         {
             if (argValue.IsNullOrEmpty())
             {
@@ -40,7 +40,7 @@ namespace IkitMita
         /// <returns>Returns argument value without any changes</returns>
         /// <exception cref="ArgumentNullException">If argument value is null</exception>
         [NotNull]
-        public static T NotNull<T>([NoEnumeration]T argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : class
+        public static T NotNull<T>([NoEnumeration]T argValue, [InvokerParameterName] string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : class
         {
             if (argValue == null)
             {
@@ -63,7 +63,7 @@ namespace IkitMita
         /// <returns>Returns argument value without any changes</returns>
         /// <exception cref="ArgumentNullException">If argument value is null</exception>
         [NotNull]
-        public static T? NotNull<T>(T? argValue, string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : struct
+        public static T? NotNull<T>(T? argValue, [InvokerParameterName] string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : struct
         {
             if (argValue == null)
             {
@@ -76,7 +76,7 @@ namespace IkitMita
             return argValue;
         }
 
-        public static T Min<T>(T argValue, T minValue, string argName) where T : IComparable<T>
+        public static T Min<T>(T argValue, T minValue, [InvokerParameterName] string argName) where T : IComparable<T>
         {
             int res = argValue.CompareTo(minValue);
 

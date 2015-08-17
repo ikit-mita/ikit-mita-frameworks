@@ -36,10 +36,7 @@ namespace IkitMita.Mvvm.MefClient
             {
                 var showableViewModel = Locator.GetInstance(StartupViewModelType) as IShowableViewModel;
 
-                if (showableViewModel != null)
-                {
-                    showableViewModel.Show();
-                }
+                showableViewModel?.Show();
             }
         }
 

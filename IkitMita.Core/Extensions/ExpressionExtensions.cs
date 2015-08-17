@@ -17,16 +17,14 @@ namespace IkitMita
                 }
             }
 
-            if (memberExpression != null)
+            var parameterExpression = memberExpression?.Expression as ParameterExpression;
+
+            if (parameterExpression != null && parameterExpression.Name == propertyExpression.Parameters[0].Name)
             {
-                var parameterExpression = memberExpression.Expression as ParameterExpression;
-                if (parameterExpression != null && parameterExpression.Name == propertyExpression.Parameters[0].Name)
-                {
-                    return memberExpression.Member.Name;
-                }
+                return memberExpression.Member.Name;
             }
 
-            throw new ArgumentException("Invalid expression.", "propertyExpression");
+            throw new ArgumentException("Invalid expression.", nameof(propertyExpression));
         }
     }
 }

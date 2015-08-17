@@ -11,9 +11,7 @@ namespace Example.ViewModels
     {
         private bool _allowMessage;
         private ICommand _showChildCommand;
-        private int _titleMaxLength = 25;
         private string _messageTitle;
-        private int _textMaxLength = 100;
         private string _messageText;
 
         public MainViewModel()
@@ -37,14 +35,9 @@ namespace Example.ViewModels
 
         [DependsOn("TextMaxLength")]
         [DependsOn("MessageTitle")]
-        public int MessageTitleCharsLeft
-        {
-            get { return TitleMaxLength - (MessageTitle ?? string.Empty).Length; }
-        }
-        public int TitleMaxLength
-        {
-            get { return _titleMaxLength; }
-        }
+        public int MessageTitleCharsLeft => TitleMaxLength - (MessageTitle ?? string.Empty).Length;
+
+        public int TitleMaxLength { get; } = 25;
 
         public string MessageText
         {
@@ -59,15 +52,9 @@ namespace Example.ViewModels
 
         [DependsOn("TextMaxLength")]
         [DependsOn("MessageText")]
-        public int MessageTextCharsLeft
-        {
-            get { return TextMaxLength - (MessageText ?? string.Empty).Length; }
-        }
+        public int MessageTextCharsLeft => TextMaxLength - (MessageText ?? string.Empty).Length;
 
-        public int TextMaxLength
-        {
-            get { return _textMaxLength; }
-        }
+        public int TextMaxLength { get; } = 100;
 
         public bool AllowMessage
         {

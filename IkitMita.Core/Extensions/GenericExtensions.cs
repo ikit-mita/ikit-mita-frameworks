@@ -18,7 +18,7 @@ namespace IkitMita
             where TTo : class
             where TFrom : class
         {
-            targetObj = Check.NotNull(targetObj, "targetObj");
+            targetObj = Check.NotNull(targetObj, nameof(targetObj));
 
             if (sourceObj == null)
             {
@@ -57,8 +57,8 @@ namespace IkitMita
 
         private static PropertyInfo GetSourceProperty(Type type, string propertyName)
         {
-            type = Check.NotNull(type, "type");
-            propertyName = Check.NotNull(propertyName, "propertyName");
+            type = Check.NotNull(type, nameof(type));
+            propertyName = Check.NotNull(propertyName, nameof(propertyName));
 
             PropertyInfo property = type.GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
             return property != null && property.CanRead ? property : null;
@@ -72,9 +72,7 @@ namespace IkitMita
         /// <returns></returns>
         public static string ToStringSafe<T>(this T obj) where T : class
         {
-            return obj == null
-                ? string.Empty
-                : obj.ToString();
+            return obj?.ToString() ?? string.Empty;
         }
 
         /// <summary>
@@ -85,9 +83,7 @@ namespace IkitMita
         /// <returns></returns>
         public static string ToStringSafe<T>(this T? obj) where T : struct
         {
-            return obj == null
-                ? string.Empty
-                : obj.ToString();
+            return obj?.ToString() ?? string.Empty;
         }
     }
 }

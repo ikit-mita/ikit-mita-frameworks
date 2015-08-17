@@ -38,7 +38,7 @@ namespace Example.ViewModels
         [NotNull]
         public MessageViewModel ShowMessage(string message, string title, IEnumerable<string> buttons = null)
         {
-            return ShowMessage(message, title, buttons == null ? null : buttons.ToArray());
+            return ShowMessage(message, title, buttons?.ToArray());
         }
     }
 }

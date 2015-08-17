@@ -18,15 +18,9 @@ namespace Example.ViewModels
 
         public string Result { get; private set; }
 
-        public ObservableCollection<string> Buttons
-        {
-            get { return _buttons ?? (_buttons = new ObservableCollection<string>()); }
-        }
+        public ObservableCollection<string> Buttons => _buttons ?? (_buttons = new ObservableCollection<string>());
 
-        public ICommand OnButtonClickCommand
-        {
-            get { return _onButtonClickCommand ?? (_onButtonClickCommand = new DelegateCommand<string>(OnButtonClick)); }
-        }
+        public ICommand OnButtonClickCommand => _onButtonClickCommand ?? (_onButtonClickCommand = new DelegateCommand<string>(OnButtonClick));
 
         private async void OnButtonClick(string button)
         {

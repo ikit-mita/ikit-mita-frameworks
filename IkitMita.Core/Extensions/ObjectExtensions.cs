@@ -8,8 +8,8 @@ namespace IkitMita
     {
         public static void RaiseEvent<TEventArgs>([NotNull]this object source, [NotNull]string eventName, TEventArgs eventArgs) where TEventArgs : EventArgs
         {
-            source = Check.NotNull(source, "source");
-            eventName = Check.NotNullOrEmpty(eventName, "eventName");
+            source = Check.NotNull(source, nameof(source));
+            eventName = Check.NotNullOrEmpty(eventName, nameof(eventName));
 
             var fieldInfo = source.GetType().GetField(eventName, BindingFlags.Instance | BindingFlags.NonPublic);
 

@@ -23,15 +23,15 @@ namespace IkitMita.Mvvm.ViewModels
             set { _threadSafeInvoker = value; }
         }
 
-        public bool IsBusy { get { return _operationsInProggress.Count > 0; } }
+        public bool IsBusy => _operationsInProggress.Count > 0;
 
-        [DependsOn("IsBusy")]
-        public bool IsFree { get { return _operationsInProggress.Count == 0; } }
+        [DependsOn(nameof(IsBusy))]
+        public bool IsFree => _operationsInProggress.Count == 0;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            propertyName = Check.NotNullOrEmpty(propertyName, "propertyName");
+            propertyName = Check.NotNullOrEmpty(propertyName, nameof(propertyName));
 
             var handler = PropertyChanged;
             if (handler != null)
@@ -92,13 +92,13 @@ namespace IkitMita.Mvvm.ViewModels
         protected OperationBusier StartOperation()
         {
             _operationsInProggress.Push(1);
-            OnPropertyChanged("IsBusy");
+            OnPropertyChanged(nameof(IsBusy));
 
             return new OperationBusier(this, vm =>
                 {
                     int i;
                     _operationsInProggress.TryPop(out i);
-                    OnPropertyChanged("IsBusy");
+                    OnPropertyChanged(nameof(IsBusy));
                 });
         }
 

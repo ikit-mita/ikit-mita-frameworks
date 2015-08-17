@@ -17,9 +17,7 @@ namespace IkitMita
         public static int ToInt(this string str, int defaultValue)
         {
             int i;
-            if (!int.TryParse(str, out i))
-                return defaultValue;
-            return i;
+            return !int.TryParse(str, out i) ? defaultValue : i;
         }
 
         /// <summary>
@@ -36,17 +34,13 @@ namespace IkitMita
         public static long ToLong(this string str, long defaultValue = default(long))
         {
             long i;
-            if (!long.TryParse(str, out i))
-                return defaultValue;
-            return i;
+            return !long.TryParse(str, out i) ? defaultValue : i;
         }
 
         public static double ToDouble(this string str, double defaultValue)
         {
             double d;
-            if (!double.TryParse(str, out d))
-                return defaultValue;
-            return d;
+            return !double.TryParse(str, out d) ? defaultValue : d;
         }
 
         public static double ToDouble(this string str)
@@ -57,7 +51,7 @@ namespace IkitMita
 
         public static string Wrap(this string str, string startWrapper, string endWrapper = null)
         {
-            Check.NotNullOrEmpty(startWrapper, "startWrapper");
+            Check.NotNullOrEmpty(startWrapper, nameof(startWrapper));
 
             return string.Concat(startWrapper, str, (endWrapper ?? startWrapper));
         }
@@ -84,8 +78,8 @@ namespace IkitMita
 
         public static bool Contains([NotNull]this string source, [NotNull]string value, bool ignoreCase)
         {
-            source = Check.NotNull(source, "source");
-            value = Check.NotNull(value, "value");
+            source = Check.NotNull(source, nameof(source));
+            value = Check.NotNull(value, nameof(value));
 
             if (ignoreCase)
             {
@@ -98,9 +92,9 @@ namespace IkitMita
 
         public static string Replace([NotNull]this string source, [NotNull][RegexPattern]string oldValue, [NotNull]string newValue, bool ignoreCase)
         {
-            source = Check.NotNull(source, "source");
-            oldValue = Check.NotNull(oldValue, "oldValue");
-            newValue = Check.NotNull(newValue, "newValue");
+            source = Check.NotNull(source, nameof(source));
+            oldValue = Check.NotNull(oldValue, nameof(oldValue));
+            newValue = Check.NotNull(newValue, nameof(newValue));
 
             var regex = new Regex(oldValue, ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None);
             var newSentence = regex.Replace(source, newValue);
@@ -119,8 +113,8 @@ namespace IkitMita
 
         public static string[] Split([NotNull]this string str, [NotNull]string delimeter, StringSplitOptions options = StringSplitOptions.None)
         {
-            str = Check.NotNull(str, "str");
-            delimeter = Check.NotNull(delimeter, "delimeter");
+            str = Check.NotNull(str, nameof(str));
+            delimeter = Check.NotNull(delimeter, nameof(delimeter));
 
             string[] parts = str.Split(new[] { delimeter }, options);
             return parts;
@@ -128,7 +122,7 @@ namespace IkitMita
 
         public static string[] Split([NotNull]this string str, char delimeter, StringSplitOptions options = StringSplitOptions.None)
         {
-            str = Check.NotNull(str, "str");
+            str = Check.NotNull(str, nameof(str));
 
             string[] parts = str.Split(new[] { delimeter }, options);
             return parts;
@@ -137,28 +131,28 @@ namespace IkitMita
         [StringFormatMethod("format")]
         public static string FormatWith(this string format, params object[] args)
         {
-            format = Check.NotNull(format, "format");
+            format = Check.NotNull(format, nameof(format));
             return string.Format(format, args);
         }
 
         [StringFormatMethod("format")]
         public static string FormatWith(this string format, object arg0)
         {
-            format = Check.NotNull(format, "format");
+            format = Check.NotNull(format, nameof(format));
             return string.Format(format, arg0);
         }
 
         [StringFormatMethod("format")]
         public static string FormatWith(this string format, object arg0, object arg1)
         {
-            format = Check.NotNull(format, "format");
+            format = Check.NotNull(format, nameof(format));
             return string.Format(format, arg0, arg1);
         }
 
         [StringFormatMethod("format")]
         public static string FormatWith(this string format, object arg0, object arg1, object arg2)
         {
-            format = Check.NotNull(format, "format");
+            format = Check.NotNull(format, nameof(format));
             return string.Format(format, arg0, arg1, arg2);
         }
 
@@ -175,7 +169,7 @@ namespace IkitMita
         /// <returns></returns>
         public static string Remove([NotNull]this string str, string value)
         {
-            str = Check.NotNull(str, "str");
+            str = Check.NotNull(str, nameof(str));
             return str.Replace(value, string.Empty);
         }
 
@@ -186,7 +180,7 @@ namespace IkitMita
         /// <returns>Bytes array representation of string.</returns>
         public static byte[] GetBytes([NotNull]this string str)
         {
-            str = Check.NotNull(str, "str");
+            str = Check.NotNull(str, nameof(str));
             byte[] bytes = new byte[str.Length * sizeof(char)];
             Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;

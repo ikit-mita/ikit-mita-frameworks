@@ -50,10 +50,7 @@ namespace IkitMita.Wpf
             return (d, e) =>
             {
                 PropertyChangedCallback<TProperty> callback = propertyChangedCallbackFunc((T)d);
-                if (callback != null)
-                {
-                    callback(new DependencyPropertyChangedEventArgs<TProperty>(e));
-                }
+                callback?.Invoke(new DependencyPropertyChangedEventArgs<TProperty>(e));
             };
         }
 

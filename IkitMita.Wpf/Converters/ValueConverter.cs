@@ -44,7 +44,7 @@ namespace IkitMita.Wpf.Converters
         protected Type GetNextExpectedType()
         {
             var valueConverter = NextConverter as ValueConverter;
-            return valueConverter == null ? null : valueConverter.GetExpectedType();
+            return valueConverter?.GetExpectedType();
         }
     }
 }

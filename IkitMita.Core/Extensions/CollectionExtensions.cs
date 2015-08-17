@@ -15,8 +15,8 @@ namespace IkitMita
         /// <returns>Index of a item which is matched with <paramref name="predicate"/></returns>
         public static int IndexOf<T>([NotNull]this ICollection<T> collection, [NotNull]Func<T, bool> predicate)
         {
-            collection = Check.NotNull(collection, "collection");
-            predicate = Check.NotNull(predicate, "predicate");
+            collection = Check.NotNull(collection, nameof(collection));
+            predicate = Check.NotNull(predicate, nameof(predicate));
 
 
             int index = -1;
@@ -49,7 +49,7 @@ namespace IkitMita
         public static TCollection AddRange<TCollection, TItem>([NotNull]this TCollection collection, IEnumerable<TItem> items)
             where TCollection : class, ICollection<TItem>
         {
-            collection = Check.NotNull(collection, "collection");
+            collection = Check.NotNull(collection, nameof(collection));
 
             if (items == null)
             {
@@ -76,7 +76,7 @@ namespace IkitMita
         public static TCollection RemoveRange<TCollection, TItem>([NotNull]this TCollection collection, IEnumerable<TItem> items)
             where TCollection : class, ICollection<TItem>
         {
-            collection = Check.NotNull(collection, "collection");
+            collection = Check.NotNull(collection, nameof(collection));
 
             if (items == null)
             {
@@ -95,7 +95,7 @@ namespace IkitMita
         public static TCollection AddFormat<TCollection>([NotNull]this TCollection collection, string format, params object[] args)
             where TCollection : class, ICollection<string>
         {
-            collection = Check.NotNull(collection, "collection");
+            collection = Check.NotNull(collection, nameof(collection));
 
             collection.Add(format.FormatWith(args));
             return collection;

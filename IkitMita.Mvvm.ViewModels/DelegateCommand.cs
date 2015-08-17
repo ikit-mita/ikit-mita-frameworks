@@ -67,7 +67,7 @@ namespace IkitMita.Mvvm.ViewModels
             }
             else
             {
-                throw new ArgumentException("Type {0} can't be converted from {1}.".FormatWith(typeof(T).FullName, parameter.GetType().FullName), "parameter");
+                throw new ArgumentException("Type {0} can't be converted from {1}.".FormatWith(typeof(T).FullName, parameter.GetType().FullName), nameof(parameter));
             }
 
             return p;

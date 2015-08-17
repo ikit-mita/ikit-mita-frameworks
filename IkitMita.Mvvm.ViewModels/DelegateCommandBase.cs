@@ -23,7 +23,7 @@ namespace IkitMita.Mvvm.ViewModels
         public virtual void RaiseCanExecuteChanged()
         {
             var handler = CanExecuteChanged;
-            if (handler != null) handler(this, EventArgs.Empty);
+            handler?.Invoke(this, EventArgs.Empty);
         }
     }
 }

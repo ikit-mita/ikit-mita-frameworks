@@ -42,14 +42,14 @@ namespace IkitMita
 
         public static TValue GetOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TValue> getDefault)
         {
-            getDefault = Check.NotNull(getDefault, "getDefault");
+            getDefault = Check.NotNull(getDefault, nameof(getDefault));
             return dictionary.GetOrAdd(key, k => getDefault());
         }
 
         public static TValue GetOrAdd<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TKey, TValue> getDefault)
         {
-            dictionary = Check.NotNull(dictionary, "dictionary");
-            getDefault = Check.NotNull(getDefault, "getDefault");
+            dictionary = Check.NotNull(dictionary, nameof(dictionary));
+            getDefault = Check.NotNull(getDefault, nameof(getDefault));
             TValue value;
 
             if (!dictionary.TryGetValue(key, out value))
@@ -94,14 +94,14 @@ namespace IkitMita
 
         public static TValue GetValueSafe<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TValue> getDefault)
         {
-            getDefault = Check.NotNull(getDefault, "getDefault");
+            getDefault = Check.NotNull(getDefault, nameof(getDefault));
             return dictionary.GetOrAdd(key, k => getDefault());
         }
 
         public static TValue GetValueSafe<TKey, TValue>([NotNull]this IDictionary<TKey, TValue> dictionary, TKey key, [NotNull]Func<TKey, TValue> getDefault)
         {
-            dictionary = Check.NotNull(dictionary, "dictionary");
-            getDefault = Check.NotNull(getDefault, "getDefault");
+            dictionary = Check.NotNull(dictionary, nameof(dictionary));
+            getDefault = Check.NotNull(getDefault, nameof(getDefault));
 
             TValue value;
 

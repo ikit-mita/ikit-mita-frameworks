@@ -27,10 +27,7 @@ namespace IkitMita.DataAccess
             set { _id = value; }
         }
 
-        public virtual bool IsNew
-        {
-            get { return Id < 1; }
-        }
+        public virtual bool IsNew => Id < 1;
 
         public override bool Equals(object obj)
         {

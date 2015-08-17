@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converters="clr-namespace:IkitMita.Wpf.Converters"
-    xmlns:wpf="clr-namespace:IkitMita.Wpf">
+    xmlns:converters="clr-namespace:IkitMita.Wpf.Converters;assembly=IkitMita.Wpf"
+    xmlns:wpf="clr-namespace:IkitMita.Wpf;assembly=IkitMita.Wpf">
 
     <converters:BooleanConverter x:Key="BoolToVisibleConv" OnTrue="{wpf:Visibility Visible}" OnFalse="{wpf:Visibility Collapsed}" />
     <converters:BooleanConverter x:Key="BoolToVisibleHiddenConv" OnTrue="{wpf:Visibility Visible}" OnFalse="{wpf:Visibility Hidden}" />

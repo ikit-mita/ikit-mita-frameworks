@@ -15,7 +15,7 @@ namespace IkitMita.Mvvm.ViewModels
 
         public IShowableViewModel Parent { get; set; }
 
-        public bool ModalResult { get { return _modalResult.GetValueOrDefault(); } }
+        public bool ModalResult => _modalResult.GetValueOrDefault();
 
         public bool IsClosed { get; protected set; }
 
@@ -73,7 +73,7 @@ namespace IkitMita.Mvvm.ViewModels
         protected virtual void OnClosed()
         {
             var handler = Closed;
-            if (handler != null) handler(this, EventArgs.Empty);
+            handler?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler Closed;

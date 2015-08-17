@@ -16,8 +16,8 @@ namespace IkitMita
         /// <param name="action">Action for executing.</param>
         public static void Foreach<T>([NotNull]this IEnumerable<T> source, [NotNull]Action<T> action)
         {
-            source = Check.NotNull(source, "source");
-            action = Check.NotNull(action, "action");
+            source = Check.NotNull(source, nameof(source));
+            action = Check.NotNull(action, nameof(action));
 
             foreach (T item in source)
             {
@@ -33,8 +33,8 @@ namespace IkitMita
         /// <param name="action">Action for executing.</param>
         public static void ForeachSafe<T>([NotNull]this IEnumerable<T> source, [NotNull]Action<T> action)
         {
-            source = Check.NotNull(source, "source");
-            action = Check.NotNull(action, "action");
+            source = Check.NotNull(source, nameof(source));
+            action = Check.NotNull(action, nameof(action));
 
             foreach (T item in source)
             {
@@ -60,8 +60,8 @@ namespace IkitMita
         /// </param>
         public static void Foreach<T>([NotNull]this IEnumerable<T> source, [NotNull]Action<T, int> action)
         {
-            source = Check.NotNull(source, "source");
-            action = Check.NotNull(action, "action");
+            source = Check.NotNull(source, nameof(source));
+            action = Check.NotNull(action, nameof(action));
 
             int index = 0;
             foreach (T item in source)
@@ -73,8 +73,8 @@ namespace IkitMita
         [LinqTunnel]
         public static IEnumerable<T> Do<T>([NotNull]this IEnumerable<T> source, [NotNull]Action<T> action)
         {
-            source = Check.NotNull(source, "source");
-            action = Check.NotNull(action, "action");
+            source = Check.NotNull(source, nameof(source));
+            action = Check.NotNull(action, nameof(action));
 
             foreach (T item in source)
             {
@@ -86,9 +86,9 @@ namespace IkitMita
         [LinqTunnel]
         public static IEnumerable<T> DoIf<T>([NotNull]this IEnumerable<T> source, [NotNull]Predicate<T> checker, [NotNull]Action<T> action)
         {
-            source = Check.NotNull(source, "source");
-            checker = Check.NotNull(checker, "checker");
-            action = Check.NotNull(action, "action");
+            source = Check.NotNull(source, nameof(source));
+            checker = Check.NotNull(checker, nameof(checker));
+            action = Check.NotNull(action, nameof(action));
 
             foreach (T item in source)
             {
@@ -110,37 +110,37 @@ namespace IkitMita
         [LinqTunnel]
         public static IEnumerable<TSource> WhereNotNull<TSource, TResult>([NotNull]this IEnumerable<TSource> source, [NotNull]Func<TSource, TResult> selector)
         {
-            source = Check.NotNull(source, "source");
-            selector = Check.NotNull(selector, "selector");
+            source = Check.NotNull(source, nameof(source));
+            selector = Check.NotNull(selector, nameof(selector));
             return source.Where(item => selector(item) != null);
         }
 
         [LinqTunnel]
         public static IEnumerable<string> WhereNotNullOrEmpty([NotNull]this IEnumerable<string> source)
         {
-            source = Check.NotNull(source, "source");
+            source = Check.NotNull(source, nameof(source));
             return source.Where(item => !item.IsNullOrEmpty());
         }
 
         [LinqTunnel]
         public static IEnumerable<TSource> WhereNotNullOrEmpty<TSource>([NotNull]this IEnumerable<TSource> source, Func<TSource, string> selector)
         {
-            source = Check.NotNull(source, "source");
-            selector = Check.NotNull(selector, "selector");
+            source = Check.NotNull(source, nameof(source));
+            selector = Check.NotNull(selector, nameof(selector));
             return source.Where(item => !selector(item).IsNullOrEmpty());
         }
 
         [LinqTunnel]
         public static IOrderedEnumerable<T> Sort<T>([NotNull]this IEnumerable<T> source)
         {
-            source = Check.NotNull(source, "source");
+            source = Check.NotNull(source, nameof(source));
             return source.OrderBy(item => item);
         }
 
         [LinqTunnel]
         public static IOrderedEnumerable<T> SortDescending<T>([NotNull]this IEnumerable<T> source)
         {
-            source = Check.NotNull(source, "source");
+            source = Check.NotNull(source, nameof(source));
             return source.OrderByDescending(item => item);
         }
 
@@ -160,8 +160,8 @@ namespace IkitMita
         /// </returns>
         public static Dictionary<TKey, List<TSource>> GroupToDictionary<TKey, TSource>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
-            source = Check.NotNull(source, "source");
-            keySelector = Check.NotNull(keySelector, "keySelector");
+            source = Check.NotNull(source, nameof(source));
+            keySelector = Check.NotNull(keySelector, nameof(keySelector));
             var dict = source
                 .GroupBy(keySelector)
                 .ToDictionary(group => group.Key, group => group.ToList());
@@ -171,8 +171,8 @@ namespace IkitMita
         public static TSource MinBy<TSource, TProp>([NotNull]this IEnumerable<TSource> source, [NotNull]Func<TSource, TProp> selector)
             where TProp : IComparable<TProp>
         {
-            source = Check.NotNull(source, "source");
-            selector = Check.NotNull(selector, "selector");
+            source = Check.NotNull(source, nameof(source));
+            selector = Check.NotNull(selector, nameof(selector));
 
             var enumerator = source.GetEnumerator();
 
@@ -202,8 +202,8 @@ namespace IkitMita
         public static TSource MaxBy<TSource, TProp>([NotNull]this IEnumerable<TSource> source, [NotNull]Func<TSource, TProp> selector)
             where TProp : IComparable<TProp>
         {
-            source = Check.NotNull(source, "source");
-            selector = Check.NotNull(selector, "selector");
+            source = Check.NotNull(source, nameof(source));
+            selector = Check.NotNull(selector, nameof(selector));
 
             var enumerator = source.GetEnumerator();
 
@@ -231,7 +231,7 @@ namespace IkitMita
 
         public static bool MinMax<T>([NotNull]this IEnumerable<T> source, out T min, out T max)
         {
-            source = Check.NotNull(source, "source");
+            source = Check.NotNull(source, nameof(source));
             Comparer<T> comparer = Comparer<T>.Default;
             var enumerator = source.GetEnumerator();
 
@@ -272,8 +272,8 @@ namespace IkitMita
         /// </returns>
         public static string Join<T>([NotNull]this IEnumerable<T> values, [NotNull]string separator)
         {
-            values = Check.NotNull(values, "values");
-            separator = Check.NotNull(separator, "separator");
+            values = Check.NotNull(values, nameof(values));
+            separator = Check.NotNull(separator, nameof(separator));
 
             return string.Join(separator, values);
         }
@@ -292,9 +292,9 @@ namespace IkitMita
         /// </returns>
         public static string Join<T>([NotNull]this IEnumerable<T> values, [NotNull]string separator, [NotNull]string format)
         {
-            values = Check.NotNull(values, "values");
-            separator = Check.NotNull(separator, "separator");
-            format = Check.NotNullOrEmpty(format, "format");
+            values = Check.NotNull(values, nameof(values));
+            separator = Check.NotNull(separator, nameof(separator));
+            format = Check.NotNullOrEmpty(format, nameof(format));
             
             return string.Join(separator, values.Select(i => format.FormatWith(i)));
         }
@@ -313,24 +313,24 @@ namespace IkitMita
         /// </returns>
         public static string Join<T>([NotNull]this IEnumerable<T> values, [NotNull]string separator, [NotNull]Func<T, string> toString)
         {
-            values = Check.NotNull(values, "values");
-            separator = Check.NotNull(separator, "separator");
-            toString = Check.NotNull(toString, "toString");
+            values = Check.NotNull(values, nameof(values));
+            separator = Check.NotNull(separator, nameof(separator));
+            toString = Check.NotNull(toString, nameof(toString));
             
             return string.Join(separator, values.Select(i => toString(i)));
         }
 
         public static HashSet<T> ToHashSet<T>([NotNull]this IEnumerable<T> source)
         {
-            source = Check.NotNull(source, "source");
+            source = Check.NotNull(source, nameof(source));
 
             return new HashSet<T>(source);
         }
 
         public static HashSet<TResult> ToHashSet<TSource, TResult>([NotNull]this IEnumerable<TSource> source, [NotNull]Func<TSource, TResult> selector)
         {
-            source = Check.NotNull(source, "source");
-            selector = Check.NotNull(selector, "selector");
+            source = Check.NotNull(source, nameof(source));
+            selector = Check.NotNull(selector, nameof(selector));
 
             return new HashSet<TResult>(source.Select(selector));
         }
@@ -338,7 +338,7 @@ namespace IkitMita
         [LinqTunnel]
         public static IEnumerable<T> Expand<T>([NotNull]this IEnumerable<IEnumerable<T>> values)
         {
-            values = Check.NotNull(values, "values");
+            values = Check.NotNull(values, nameof(values));
 
             // ReSharper disable once PossibleMultipleEnumeration
             return values.SelectMany(items => items);
@@ -347,7 +347,7 @@ namespace IkitMita
         [LinqTunnel]
         public static IEnumerable<List<T>> Split<T>([NotNull]this IEnumerable<T> values, int count)
         {
-            values = Check.NotNull(values, "values");
+            values = Check.NotNull(values, nameof(values));
 
             List<T> buffer = new List<T>(count);
             var enumerator = values.GetEnumerator();

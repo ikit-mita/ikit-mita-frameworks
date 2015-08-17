@@ -36,15 +36,9 @@ namespace IkitMita.DataAccess
         }
 
         [NotNull]
-        public virtual string FullName
-        {
-            get { return string.Join(" ", LastName, FirstName, MiddleName); }
-        }
+        public virtual string FullName => string.Join(" ", LastName, FirstName, MiddleName);
 
         [NotNull]
-        public virtual string ShortName
-        {
-            get { return string.Join(" ", LastName, Initials); }
-        }
+        public virtual string ShortName => string.Join(" ", LastName, Initials);
     }
 }

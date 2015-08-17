@@ -29,13 +29,13 @@ namespace IkitMita.Mvvm.ViewModels
         protected virtual void OnViewModelShown(TVm vm)
         {
             var handler = ViewModelShown;
-            if (handler != null) handler(this, new ViewModelEventArgs<TVm>(vm));
+            handler?.Invoke(this, new ViewModelEventArgs<TVm>(vm));
         }
 
         protected virtual void OnViewModelClosed(TVm vm)
         {
             var handler = ViewModelClosed;
-            if (handler != null) handler(this, new ViewModelEventArgs<TVm>(vm));
+            handler?.Invoke(this, new ViewModelEventArgs<TVm>(vm));
         }
     }
 }
