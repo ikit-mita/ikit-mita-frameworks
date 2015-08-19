@@ -10,7 +10,7 @@ namespace IkitMita.Mvvm.Views
     /// <summary>
     /// Interaction logic for ChildViewPresenter.xaml
     /// </summary>
-    public partial class ChildViewPresenter 
+    public partial class ChildViewPresenter
     {
         public ChildViewPresenter()
         {
@@ -75,6 +75,40 @@ namespace IkitMita.Mvvm.Views
 
         #endregion
 
+        #region ViewSizeToContent
+
+        public static readonly DependencyProperty ViewSizeToContentProperty = DependencyProperty.RegisterAttached(
+            "ViewSizeToContent", typeof(SizeToContent), typeof(ChildViewPresenter), new PropertyMetadata(SizeToContent.WidthAndHeight));
+
+        public static void SetViewSizeToContent(DependencyObject element, SizeToContent value)
+        {
+            element.SetValue(ViewSizeToContentProperty, value);
+        }
+
+        public static SizeToContent GetViewSizeToContent(DependencyObject element)
+        {
+            return (SizeToContent)element.GetValue(ViewSizeToContentProperty);
+        }
+
+        #endregion ViewSizeToContent
+
+        #region ViewStyle
+
+        public static readonly DependencyProperty ViewStyleProperty = DependencyProperty.RegisterAttached(
+            "ViewStyle", typeof(WindowStyle), typeof(ChildViewPresenter), new PropertyMetadata(WindowStyle.SingleBorderWindow));
+
+        public static void SetViewStyle(DependencyObject element, WindowStyle value)
+        {
+            element.SetValue(ViewStyleProperty, value);
+        }
+
+        public static WindowStyle GetViewStyle(DependencyObject element)
+        {
+            return (WindowStyle)element.GetValue(ViewStyleProperty);
+        }
+
+        #endregion ViewStyle
+        
         #region IsBusy
 
         public static readonly DependencyProperty IsBusyProperty = DependencyProperty.Register(
@@ -110,12 +144,6 @@ namespace IkitMita.Mvvm.Views
             }
         }
 
-        protected override void OnContentRendered(EventArgs e)
-        {
-            base.OnContentRendered(e);
-            SizeToContent = SizeToContent.Manual;
-        }
-
         public IView View
         {
             get { return Content as IView; }
@@ -137,12 +165,16 @@ namespace IkitMita.Mvvm.Views
                 ResizeMode = GetViewResizeMode(dependencyObject);
                 MinWidth = GetViewMinWidth(dependencyObject);
                 MinHeight = GetViewMinHeight(dependencyObject);
+                SizeToContent = GetViewSizeToContent(dependencyObject);
+                WindowStyle = GetViewStyle(dependencyObject);
             }
             else
             {
                 ResizeMode = ResizeMode.CanResize;
                 MinWidth = 0;
                 MinHeight = 0;
+                SizeToContent = SizeToContent.Manual;
+                WindowStyle = WindowStyle.SingleBorderWindow;
             }
         }
     }

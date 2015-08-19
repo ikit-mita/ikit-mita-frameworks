@@ -6,10 +6,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:viewModels="clr-namespace:Example.ViewModels;assembly=Example.ViewModels"
     xmlns:wpf="clr-namespace:IkitMita.Wpf;assembly=IkitMita.Wpf"
+    xmlns:views="clr-namespace:IkitMita.Mvvm.Views;assembly=IkitMita.Mvvm.Views"
     d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
-    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Grid.IsSharedSizeScope="True">
-        <wpf:LabeledControl Label="Message Title">
+    mc:Ignorable="d" d:DesignHeight="110" d:DesignWidth="300"
+    views:ChildViewPresenter.ViewMinHeight="110"
+    views:ChildViewPresenter.ViewMinWidth="300"
+    views:ChildViewPresenter.ViewResizeMode="CanResize"
+    views:ChildViewPresenter.ViewSizeToContent="WidthAndHeight"
+    
+    >
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10,0,0,0" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Grid.IsSharedSizeScope="True" Margin="7">
+        <wpf:LabeledControl Label="Message Title"> 
             <TextBox  Text="{Binding MessageTitle, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding TitleMaxLength}" />
         </wpf:LabeledControl>
         <TextBlock HorizontalAlignment="Right" Text="{Binding MessageTitleCharsLeft, StringFormat='Chars Left {0}'}" />

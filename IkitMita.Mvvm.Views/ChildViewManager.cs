@@ -35,13 +35,22 @@ namespace IkitMita.Mvvm.Views
 
             if (parentPresenter != null)
             {
-                presenter.ShowInTaskbar = false;
+                //presenter.ShowInTaskbar = false;
                 presenter.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 presenter.Owner = parentPresenter;
             }
 
             _openedPresenters[viewModel] = presenter;
-            presenter.Show();
+
+            if (presenter.Owner == null)
+            {
+                presenter.Show();
+            }
+            else
+            {
+                //prevent stream blocking 
+                presenter.Dispatcher.InvokeAsync(() => presenter.ShowDialog());
+            }
         }
 
         public override void CloseViewForViewModel(IChildViewModel viewModel)

@@ -2,6 +2,7 @@
 using System.ComponentModel.Composition;
 using System.Linq;
 using IkitMita;
+using IkitMita.Mvvm.ViewModels;
 using JetBrains.Annotations;
 using Microsoft.Practices.ServiceLocation;
 
@@ -19,7 +20,7 @@ namespace Example.ViewModels
         }
 
         [NotNull]
-        public MessageViewModel ShowMessage(string message, string title, params string[] buttons)
+        public MessageViewModel ShowMessage(IChildViewModel parent, string message, string title, params string[] buttons)
         {
             if (buttons.IsNullOrEmpty())
             {
@@ -27,6 +28,7 @@ namespace Example.ViewModels
             }
 
             var messageViewModel = _serviceLocator.GetInstance<MessageViewModel>();
+            messageViewModel.Parent = parent;
             messageViewModel.SetTitle(title);
             messageViewModel.Message = message;
             messageViewModel.Buttons.AddRange(buttons);
@@ -36,9 +38,9 @@ namespace Example.ViewModels
         }
 
         [NotNull]
-        public MessageViewModel ShowMessage(string message, string title, IEnumerable<string> buttons = null)
+        public MessageViewModel ShowMessage(IChildViewModel parent, string message, string title, IEnumerable<string> buttons = null)
         {
-            return ShowMessage(message, title, buttons?.ToArray());
+            return ShowMessage(parent, message, title, buttons?.ToArray());
         }
     }
 }

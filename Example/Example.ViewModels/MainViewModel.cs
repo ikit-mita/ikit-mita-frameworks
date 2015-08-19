@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IkitMita;
 using IkitMita.Mvvm.ViewModels;
 
 namespace Example.ViewModels
@@ -33,8 +34,8 @@ namespace Example.ViewModels
             }
         }
 
-        [DependsOn("TextMaxLength")]
-        [DependsOn("MessageTitle")]
+        [DependsOn(nameof(TitleMaxLength))]
+        [DependsOn(nameof(MessageTitle))]
         public int MessageTitleCharsLeft => TitleMaxLength - (MessageTitle ?? string.Empty).Length;
 
         public int TitleMaxLength { get; } = 25;
@@ -50,8 +51,8 @@ namespace Example.ViewModels
             }
         }
 
-        [DependsOn("TextMaxLength")]
-        [DependsOn("MessageText")]
+        [DependsOn(nameof(TextMaxLength))]
+        [DependsOn(nameof(MessageText))]
         public int MessageTextCharsLeft => TextMaxLength - (MessageText ?? string.Empty).Length;
 
         public int TextMaxLength { get; } = 100;
@@ -67,7 +68,7 @@ namespace Example.ViewModels
             }
         }
 
-        [DependsOn("AllowMessage")]
+        [DependsOn(nameof(AllowMessage))]
         public ICommand ShowMessageCommand
         {
             get { return _showChildCommand ?? (_showChildCommand = new DelegateCommand(ShowMessage, () => AllowMessage)); }
@@ -75,14 +76,21 @@ namespace Example.ViewModels
 
         private async void ShowMessage()
         {
-           await ViewModelProvider.ShowMessage(MessageText, MessageTitle);
+            var msgVm = ViewModelProvider.ShowMessage(this, MessageText, MessageTitle);
+            await Task.Delay(500);
+            if (MessageText.IsNullOrEmpty())
+            {
+                msgVm.Message = "HO-HO-HO!!!";
+            }
+
+            await msgVm;
         }
 
         protected override async Task<bool> OnClosing(bool modalResult)
         {
-            var messageViewModel = ViewModelProvider.ShowMessage("Question", "Close?", MessageButtons.OkCancel);
+            var messageViewModel = ViewModelProvider.ShowMessage(this, "Do you realy want to close this application?", "Closing", MessageButtons.YesNo);
             var res = await messageViewModel;
-            return res == MessageButtons.OkCancel[0];
+            return res == MessageButtons.YesNo[0];
         }
     }
 }

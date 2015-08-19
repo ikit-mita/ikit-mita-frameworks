@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAwaiter.cs" />
     <Compile Include="MessageButtons.cs" />
     <Compile Include="MessageViewModel.cs" />
     <Compile Include="MainViewModel.cs" />

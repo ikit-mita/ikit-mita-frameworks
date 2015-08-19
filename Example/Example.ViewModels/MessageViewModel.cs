@@ -13,8 +13,18 @@ namespace Example.ViewModels
     {
         private ObservableCollection<string> _buttons;
         private ICommand _onButtonClickCommand;
+        private string _message;
 
-        public string Message { get; set; }
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                if (value == _message) return;
+                _message = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string Result { get; private set; }
 

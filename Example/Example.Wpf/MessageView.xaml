@@ -6,15 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:viewModels="clr-namespace:Example.ViewModels;assembly=Example.ViewModels"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:views="clr-namespace:IkitMita.Mvvm.Views;assembly=IkitMita.Mvvm.Views"
     mc:Ignorable="d" 
     d:DataContext="{d:DesignInstance viewModels:MessageViewModel}"
-    d:DesignHeight="100" d:DesignWidth="300">
-    <StackPanel>
+    d:DesignHeight="100" d:DesignWidth="300"
+    views:ChildViewPresenter.ViewMinHeight="100"
+    views:ChildViewPresenter.ViewMinWidth="300"
+    views:ChildViewPresenter.ViewResizeMode="NoResize"
+    views:ChildViewPresenter.ViewStyle="ToolWindow"
+    >
+    <StackPanel Margin="10">
         <TextBlock Text="{Binding Message}" VerticalAlignment="Center" HorizontalAlignment="Center" />
         <ItemsControl x:Name="ItemsControl" ItemsSource="{Binding Buttons}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="system:String">
                     <Button Content="{Binding}" CommandParameter="{Binding}"
+                            Margin="0,7,0,0"
                             Command="{Binding DataContext.OnButtonClickCommand, ElementName=ItemsControl}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
