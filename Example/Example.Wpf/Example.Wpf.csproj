@@ -36,6 +36,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IkitMita.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IkitMita.Core.1.0.0\lib\net45\IkitMita.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IkitMita.Mvvm.MefClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IkitMita.Mvvm.MefClient.1.0.0\lib\net45\IkitMita.Mvvm.MefClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IkitMita.Mvvm.ViewModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IkitMita.Mvvm.ViewModels.1.0.0\lib\net45\IkitMita.Mvvm.ViewModels.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IkitMita.Mvvm.Views, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IkitMita.Mvvm.Views.1.0.0\lib\net45\IkitMita.Mvvm.Views.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IkitMita.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IkitMita.Mvvm.MefClient.1.0.0\lib\net45\IkitMita.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
@@ -108,26 +128,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\IkitMita.Core\IkitMita.Core.csproj">
-      <Project>{cdcd63b3-3d56-4938-9e81-fa9e71187d3a}</Project>
-      <Name>IkitMita.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IkitMita.Mvvm.MefClient\IkitMita.Mvvm.MefClient.csproj">
-      <Project>{6d90a403-3517-440f-be8b-e370bbce8367}</Project>
-      <Name>IkitMita.Mvvm.MefClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IkitMita.Mvvm.ViewModels\IkitMita.Mvvm.ViewModels.csproj">
-      <Project>{42ec3294-1663-4a68-bfd2-95e4c391bd15}</Project>
-      <Name>IkitMita.Mvvm.ViewModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IkitMita.Mvvm.Views\IkitMita.Mvvm.Views.csproj">
-      <Project>{68a7d793-a658-4771-b333-86ad413293c2}</Project>
-      <Name>IkitMita.Mvvm.Views</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IkitMita.Wpf\IkitMita.Wpf.csproj">
-      <Project>{200aa6b6-2af6-441f-8f76-f8c34b8fd918}</Project>
-      <Name>IkitMita.Wpf</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Example.ViewModels\Example.ViewModels.csproj">
       <Project>{caeb7fec-6c75-4d87-9998-a60cfed2cc1b}</Project>
       <Name>Example.ViewModels</Name>

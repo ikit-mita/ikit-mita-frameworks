@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>IkitMita.Core</id>
+        <version>1.0.0</version>
+        <authors>Denis Zavershinskiy</authors>
+        <projectUrl>https://github.com/ikit-mita/ikit-mita-frameworks</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Base extensions and helpers</description>
+        <tags>ikit mita</tags>
+        <dependencies>
+            <dependency id="JetBrains.Annotations" version="10.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\IkitMita.Core\bin\Release\IkitMita.Core.dll" target="lib\net45\IkitMita.Core.dll" />
+    </files>
+</package>

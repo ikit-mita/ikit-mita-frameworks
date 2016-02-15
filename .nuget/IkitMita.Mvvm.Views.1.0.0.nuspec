@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>IkitMita.Mvvm.Views</id>
+        <version>1.0.0</version>
+        <authors>Denis Zavershinskiy</authors>
+        <projectUrl>https://github.com/ikit-mita/ikit-mita-frameworks</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>View Classes for IKIT MITA MVVM implementation</description>
+        <tags>ikit mita mvvm</tags>
+        <dependencies>
+            <dependency id="JetBrains.Annotations" version="10.0.0" />
+            <dependency id="IkitMita.Core" version="1.0.0" />
+            <dependency id="IkitMita.Mvvm.ViewModels" version="1.0.0" />
+            <dependency id="CommonServiceLocator" version="1.3" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\IkitMita.Mvvm.Views\bin\Release\IkitMita.Mvvm.Views.dll" target="lib\net45\IkitMita.Mvvm.Views.dll" />
+    </files>
+</package>

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Core", "IkitMita.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FB665F99-74D9-48C9-B5AF-FC861B07862D}"
 	ProjectSection(SolutionItems) = preProject
+		.nuget\IkitMita.Core.1.0.0.nuspec = .nuget\IkitMita.Core.1.0.0.nuspec
+		.nuget\IkitMita.Mvvm.MefClient.1.0.0.nuspec = .nuget\IkitMita.Mvvm.MefClient.1.0.0.nuspec
+		.nuget\IkitMita.Mvvm.ViewModels.1.0.0.nuspec = .nuget\IkitMita.Mvvm.ViewModels.1.0.0.nuspec
+		.nuget\IkitMita.Mvvm.Views.1.0.0.nuspec = .nuget\IkitMita.Mvvm.Views.1.0.0.nuspec
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
