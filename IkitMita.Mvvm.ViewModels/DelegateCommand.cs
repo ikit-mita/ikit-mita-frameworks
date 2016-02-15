@@ -3,8 +3,6 @@ using System.ComponentModel;
 
 namespace IkitMita.Mvvm.ViewModels
 {
-
-
     public class DelegateCommand : DelegateCommandBase
     {
         private readonly Action _action;

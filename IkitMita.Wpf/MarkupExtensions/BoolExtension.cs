@@ -6,7 +6,7 @@ namespace IkitMita.Wpf
     [MarkupExtensionReturnType(typeof(bool))]
     public sealed class BoolExtension : MarkupExtension
     {
-        public bool Value { get; private set; }
+        public bool Value { get; }
 
         public BoolExtension(bool value)
         {

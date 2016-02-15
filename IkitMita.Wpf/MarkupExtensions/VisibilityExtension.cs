@@ -7,7 +7,7 @@ namespace IkitMita.Wpf
     [MarkupExtensionReturnType(typeof(Visibility))]
     public class VisibilityExtension : MarkupExtension
     {
-        public Visibility Value { get; private set; }
+        public Visibility Value { get; }
 
         public VisibilityExtension(Visibility value)
         {

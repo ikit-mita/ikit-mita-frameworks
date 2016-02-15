@@ -36,19 +36,21 @@ namespace IkitMita
             }
         }
 
-        private static readonly string _defaultExceptionFormat = "{0}: {1}" + Environment.NewLine + "Stack trace:" + Environment.NewLine + "{2}";
-
         /// <summary>
         /// Expand <paramref name="exception"/> and inner exceptions to string.
         /// </summary>
         /// <param name="exception"></param>
-        /// <param name="format"></param>
+        /// <param name="format">
+        /// {0} - GetType().FullName, {1} - Message, {2} - StackTrace
+        /// </param>
         /// <returns></returns>
         public static string ExpandToString(this Exception exception, string format = null)
         {
+            const string defaultExceptionFormat = "{0}: {1}\r\nStack trace:\r\n{2}";
+
             if (format.IsNullOrWhiteSpace())
             {
-                format = _defaultExceptionFormat;
+                format = defaultExceptionFormat;
             }
 
             StringBuilder builder = exception

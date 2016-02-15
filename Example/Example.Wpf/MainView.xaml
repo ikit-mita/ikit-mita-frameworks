@@ -13,7 +13,6 @@
     views:ChildViewPresenter.ViewMinWidth="300"
     views:ChildViewPresenter.ViewResizeMode="CanResize"
     views:ChildViewPresenter.ViewSizeToContent="WidthAndHeight"
-    
     >
     <UserControl.Resources>
         <Style TargetType="TextBox">

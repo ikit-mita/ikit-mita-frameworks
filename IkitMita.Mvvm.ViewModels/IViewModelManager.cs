@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 
 namespace IkitMita.Mvvm.ViewModels
 {
-    public interface IViewModelManager<TVm> where TVm : IViewModel
+    public interface IViewModelManager<TVm> where TVm : IShowableViewModel
     {
         void ShowViewModel([NotNull]TVm viewModel);
         void CloseViewModel([NotNull]TVm viewModel);

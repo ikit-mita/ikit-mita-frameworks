@@ -12,8 +12,8 @@ namespace IkitMita.Wpf
             Property = e.Property;
         }
 
-        public T NewValue { get; private set; }
-        public T OldValue { get; private set; }
-        public DependencyProperty Property { get; private set; }
+        public T NewValue { get; }
+        public T OldValue { get; }
+        public DependencyProperty Property { get; }
     }
 }

@@ -33,12 +33,8 @@ namespace IkitMita.Mvvm.ViewModels
         {
             propertyName = Check.NotNullOrEmpty(propertyName, nameof(propertyName));
 
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                //UI thread save
-                ThreadSafeInvoker.Invoke(() => handler(this, new PropertyChangedEventArgs(propertyName)));
-            }
+            //UI thread save
+            ThreadSafeInvoker.Invoke(() => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)));
 
             CheckDependentProperties(propertyName);
         }

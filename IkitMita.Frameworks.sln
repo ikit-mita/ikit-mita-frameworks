@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Core", "IkitMita.Core\IkitMita.Core.csproj", "{CDCD63B3-3D56-4938-9E81-FA9E71187D3A}"
 EndProject
@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FB665F
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.DataAccess.EF", "IkitMita.DataAccess.EF\IkitMita.DataAccess.EF.csproj", "{D3319773-108D-4026-9EB9-0C6D636C5EF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Mvvm.Views", "IkitMita.Mvvm.Views\IkitMita.Mvvm.Views.csproj", "{68A7D793-A658-4771-B333-86AD413293C2}"
 EndProject
@@ -28,6 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ViewModels", "Examp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkitMita.Wpf", "IkitMita.Wpf\IkitMita.Wpf.csproj", "{200AA6B6-2AF6-441F-8F76-F8C34B8FD918}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{A6721A3D-6DC9-484A-BBF0-501213CFF329}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,10 +43,6 @@ Global
 		{CDCD63B3-3D56-4938-9E81-FA9E71187D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDCD63B3-3D56-4938-9E81-FA9E71187D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDCD63B3-3D56-4938-9E81-FA9E71187D3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3319773-108D-4026-9EB9-0C6D636C5EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68A7D793-A658-4771-B333-86AD413293C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68A7D793-A658-4771-B333-86AD413293C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68A7D793-A658-4771-B333-86AD413293C2}.Release|Any CPU.ActiveCfg = Release|Any CPU

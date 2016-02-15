@@ -6,25 +6,15 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace IkitMita.Mvvm.Views
 {
-    public abstract class ViewManagerBase<TVm> : IViewManager<TVm> where TVm : IViewModel
+    public abstract class ViewManagerBase<TVm> : IViewManager<TVm> where TVm : IShowableViewModel
     {
         protected readonly IServiceLocator ServiceLocator;
 
         protected ViewManagerBase(IViewModelManager<TVm> vmManager, IServiceLocator serviceLocator)
         {
             ServiceLocator = serviceLocator;
-            vmManager.ViewModelShown += OnViewModelShown;
-            vmManager.ViewModelClosed += OnViewModelClosed;
-        }
-
-        private void OnViewModelShown(object sender, ViewModelEventArgs<TVm> e)
-        {
-            ShowViewForViewModel(e.ViewModel);
-        }
-
-        private void OnViewModelClosed(object sender, ViewModelEventArgs<TVm> e)
-        {
-            CloseViewForViewModel(e.ViewModel);
+            vmManager.ViewModelShown += (sender, e) => ShowViewForViewModel(e.ViewModel);
+            vmManager.ViewModelClosed += (sender, e) => CloseViewForViewModel(e.ViewModel);
         }
 
         public abstract void ShowViewForViewModel(TVm viewModel);

@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace IkitMita.Mvvm.ViewModels
 {
@@ -7,7 +8,7 @@ namespace IkitMita.Mvvm.ViewModels
     {
         public string PropertyName { get; }
 
-        public DependsOnAttribute(string propertyName)
+        public DependsOnAttribute([InvokerParameterName] string propertyName)
         {
             PropertyName = propertyName;
         }

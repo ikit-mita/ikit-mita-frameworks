@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IkitMita.Mvvm.ViewModels
 {
-    public class ViewModelManagerBase<TVm> : IViewModelManager<TVm> where TVm : IViewModel
+    public class ViewModelManagerBase<TVm> : IViewModelManager<TVm> where TVm : IShowableViewModel
     {
         private readonly HashSet<TVm> _openedViewModels = new HashSet<TVm>();
 
@@ -28,14 +28,12 @@ namespace IkitMita.Mvvm.ViewModels
 
         protected virtual void OnViewModelShown(TVm vm)
         {
-            var handler = ViewModelShown;
-            handler?.Invoke(this, new ViewModelEventArgs<TVm>(vm));
+            ViewModelShown?.Invoke(this, new ViewModelEventArgs<TVm>(vm));
         }
 
         protected virtual void OnViewModelClosed(TVm vm)
         {
-            var handler = ViewModelClosed;
-            handler?.Invoke(this, new ViewModelEventArgs<TVm>(vm));
+            ViewModelClosed?.Invoke(this, new ViewModelEventArgs<TVm>(vm));
         }
     }
 }

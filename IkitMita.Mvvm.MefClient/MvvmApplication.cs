@@ -19,7 +19,6 @@ namespace IkitMita.Mvvm.MefClient
             InitializeMef();
         }
 
-
         protected void InitializeMef()
         {
             var assembly = new AssemblyCatalog(Assembly.GetEntryAssembly());

@@ -9,6 +9,6 @@ namespace IkitMita.Mvvm.ViewModels
             ViewModel = viewModel;
         }
 
-        public TVm ViewModel { get; private set; }
+        public TVm ViewModel { get; }
     }
 }

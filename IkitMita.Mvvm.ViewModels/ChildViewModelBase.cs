@@ -72,8 +72,7 @@ namespace IkitMita.Mvvm.ViewModels
 
         protected virtual void OnClosed()
         {
-            var handler = Closed;
-            handler?.Invoke(this, EventArgs.Empty);
+            Closed?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler Closed;

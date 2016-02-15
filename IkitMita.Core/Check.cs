@@ -5,6 +5,9 @@ using JetBrains.Annotations;
 
 namespace IkitMita
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class Check
     {
         /// <summary>
@@ -21,9 +24,8 @@ namespace IkitMita
         {
             if (argValue.IsNullOrEmpty())
             {
-                string method = methodName.IsNullOrEmpty() ? string.Empty : (" in method " + methodName);
-                string @class = filePath.IsNullOrEmpty() ? string.Empty : (" of class " + Path.GetFileNameWithoutExtension(filePath));
-
+                string method = MethodMsg(methodName);
+                string @class = ClassMsg(filePath);
                 throw new ArgumentException("String argument {0}{1}{2} can't be null or empty.".FormatWith(argName, method, @class), argName);
             }
 
@@ -44,9 +46,8 @@ namespace IkitMita
         {
             if (argValue == null)
             {
-                string method = methodName.IsNullOrEmpty() ? string.Empty : (" in method " + methodName);
-                string @class = filePath.IsNullOrEmpty() ? string.Empty : (" of class " + Path.GetFileNameWithoutExtension(filePath));
-
+                string method = MethodMsg(methodName);
+                string @class = ClassMsg(filePath);
                 throw new ArgumentNullException("Argument {0}{1}{2} can't be null.".FormatWith(argName, method, @class), argName);
             }
 
@@ -67,25 +68,47 @@ namespace IkitMita
         {
             if (argValue == null)
             {
-                string method = methodName.IsNullOrEmpty() ? string.Empty : (" in method " + methodName);
-                string @class = filePath.IsNullOrEmpty() ? string.Empty : (" of class " + Path.GetFileNameWithoutExtension(filePath));
-
+                string method = MethodMsg(methodName);
+                string @class = ClassMsg(filePath);
                 throw new ArgumentNullException("Argument {0}{1}{2} can't be null.".FormatWith(argName, method, @class), argName);
             }
 
             return argValue;
         }
 
-        public static T Min<T>(T argValue, T minValue, [InvokerParameterName] string argName) where T : IComparable<T>
+        /// <summary>
+        /// Check if comparable type argument is not less than <paramref name="minValue"/>
+        /// </summary>
+        /// <param name="argValue">Argument value for checking</param>
+        /// <param name="minValue"></param>
+        /// <param name="argName">Argument name for correct exception</param>
+        /// <param name="methodName">Caller name for better exception message</param>
+        /// <param name="filePath">Caller file path for better exception message</param>
+        /// <returns>Returns argument value without any changes</returns>
+        /// <exception cref="ArgumentOutOfRangeException">If argument value is less than <paramref name="minValue"/></exception>
+        public static T Min<T>(T argValue, T minValue, [InvokerParameterName] string argName, [CallerMemberName] string methodName = null, [CallerFilePath] string filePath = null) where T : IComparable<T>
         {
             int res = argValue.CompareTo(minValue);
 
             if (res < 0)
             {
-                throw new ArgumentOutOfRangeException(argName, "Min value for {0} is {1}".FormatWith(argName, minValue));
+                string method = MethodMsg(methodName);
+                string @class = ClassMsg(filePath);
+                throw new ArgumentOutOfRangeException(argName, "Min value for {0}{1}{2} is {3}".FormatWith(argName, method, @class, minValue));
             }
 
             return argValue;
         }
+
+        private static string ClassMsg(string filePath)
+        {
+            return filePath.IsNullOrEmpty() ? string.Empty : (" of class " + Path.GetFileNameWithoutExtension(filePath));
+        }
+
+        private static string MethodMsg(string methodName)
+        {
+            return methodName.IsNullOrEmpty() ? string.Empty : (" in method " + methodName);
+        }
+
     }
 }

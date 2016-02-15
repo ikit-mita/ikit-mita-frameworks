@@ -8,7 +8,7 @@ namespace IkitMita.Mvvm.ViewModels
 
         public void Invoke(Action action)
         {
-            action.Invoke();
+            action?.Invoke();
         }
     }
 }

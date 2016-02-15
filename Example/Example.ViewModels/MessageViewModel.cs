@@ -50,7 +50,5 @@ namespace Example.ViewModels
             if (IsClosed) tcs.TrySetResult(Result);
             return tcs.Task.GetAwaiter();
         }
-
-
     }
 }
